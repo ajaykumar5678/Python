@@ -1,0 +1,40 @@
+def calculate_grade(marks):
+    if marks >= 90:
+        return "A+"
+    elif marks >= 80:
+        return "A"
+    elif marks >= 70:
+        return "B"
+    elif marks >= 60:
+        return "C"
+    elif marks >= 50:
+        return "D"
+    else:
+        return "Fail"
+
+def get_valid_marks():
+    while True:
+        try:
+            marks = float(input("Enter the marks obtained by the student: "))
+            if marks < 0 or marks > 100:
+                raise ValueError("Marks should be between 0 and 100")
+            return marks
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+
+def main():
+    print("Welcome to the Student Grading Program!")
+
+    while True:
+        marks = get_valid_marks()
+        grade = calculate_grade(marks)
+        print(f"The grade for the student is: {grade}")
+
+        another_student = input("Do you want to calculate the grade for another student? (yes/no): ").lower()
+        if another_student != 'yes':
+            break
+
+    print("Thank you for using the Student Grading Program!")
+
+if __name__ == "__main__":
+    main()
